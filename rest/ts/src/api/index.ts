@@ -1,7 +1,7 @@
-const { Router } = require('express');
-const { join } = require('path');
-const example = require('./routes/example');
-const requireDir = require('require-dir');
+import requireDir from 'require-dir';
+
+import { Router } from 'express';
+import { join } from 'path';
 
 /**
  * This function allows us to require all routes inside routes/ path dynamically
@@ -11,14 +11,14 @@ const routes = () => {
   const routes = Object.keys(routesFn).map(key => routesFn[key]);
 
   return routes;
-}
+};
 
-routes();
-
-module.exports = () => {
+export default () => {
   const app = Router();
-  // example(app);
-  routes().forEach(route => route(app));
 
-  return app;  
+  console.log(routes());
+  
+  routes().forEach(route => route.default(app));
+
+  return app;
 }
