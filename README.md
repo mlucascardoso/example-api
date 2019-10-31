@@ -1,2 +1,2 @@
-# api-generator-cli
-API file generator
+# api-generator-cli skeleton
+A skeleton that will be used on api-generator-cli
